@@ -43,7 +43,7 @@ var assertUrlExists = function(inurl) {
     var instr = inurl.toString();
     rest.get(instr).on('complete', function(result) {
 	if (result instanceof Error) {
-	    console.log("%s is not valid. Exiting.", instr);
+	    console.log("Failed to GET html from %s. Error: %s", instr, result.message);
 	    process.exit(1);
 	} else {
 	    fs.writeFileSync(URLTEMPFILE, result);
